@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Ma 1ère page</title>
+        <link rel="stylesheet" href="styles/style.css">       
+
+    </head>
+
+    <body>
+
+        <header>
+            <!-- MON LOGO -->
+            <div class="zoneLogo">
+                <img src="images/logo.png" alt="mon logo">
+            </div>
+            <!-- Ma baseline -->
+            <div class="zoneBaseline">
+                <p>Je suis heureux avec mon site web</p>
+            </div>
+
+        </header>
+
+        <main>
+            <h1 class="classeh1">Mon formulaire</h1>
+            
+            <form action="confirmation.html" id="monFormulaire">
+
+                <label for="nom_user">Votre nom :</label>
+                <input type="text" name="nom_user" id="nom_user" disabled>
+
+                <label for="prenom_user">Votre prénom :</label>
+                <input type="text" name="prenom_user" id="prenom_user">
+
+                <label for="subject">Sujet de votre message :</label>
+                <input type="text" name="subject" id="subject">
+
+                <label for="message">Votre message :</label>
+                <textarea name="message" id="message" rows="15" cols="50"></textarea>
+                
+                <!-- <input type="submit" value="Envoyer"> -->
+                <input id="envoyermonform" type="submit" value="Envoyer">
+
+            </form>
+
+        </main>
+
+        <!-- MON FOOTER -->
+        <footer>
+
+            <ul>
+                <li>
+                    <a href="index.html" title="Contactez nous">Accueil</a>
+                    <a href="contact.html" title="Contactez nous">Cliquez ici pour nous contacter</a>
+                </li>
+            </ul>
+
+        </footer>
+
+        <script>
+            function afficherChampsFormulaire() {
+                var nom = document.getElementById("nom_user").value;
+                var prenom = document.getElementById("prenom_user").value;
+                var sujet = document.getElementById("subject").value;
+                var message = document.getElementById("message").value;
+
+                console.log("Nom :", nom);
+                console.log("Prénom :", prenom);
+                console.log("Sujet du message :", sujet);
+                console.log("Message :", message);
+            }
+
+
+            document.addEventListener("DOMContentLoaded", function() {
+                var formulaire = document.getElementById("monFormulaire");
+                formulaire.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    afficherChampsFormulaire();
+                    setTimeout(function() {
+                        formulaire.submit();
+                    }, 5000);
+                });
+            });
+
+
+            function envoyer_Form(){
+                var nomUser = document.getElementById("nom_user").value;
+                var nouvellePhrase = "Je sais qui fait du vélo c'est : " + nomUser;
+                alert(nouvellePhrase);
+            }
+            
+            /*var inputField = document.getElementById("nom_user");
+            inputField.addEventListener("input", function() {
+                var inputValue = inputField.value;
+                if (!/^\d*$/.test(inputValue)) {
+                    inputField.value = inputValue.replace(/\D/g, "");
+                }
+            });*/
+
+        </script>
+
+
+
+    </body>
+
+
+</html>
