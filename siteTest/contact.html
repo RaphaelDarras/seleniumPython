@@ -21,6 +21,9 @@
             <div class="zoneBaseline">
                 <p>Je suis heureux avec mon site web</p>
             </div>
+            
+            <label for="recherche">Votre recherche :</label>
+            <input type="text" name="recherche" id="recherche" disabled>
 
         </header>
 
@@ -35,6 +38,9 @@
                 <label for="prenom_user">Votre prénom :</label>
                 <input type="text" name="prenom_user" id="prenom_user">
 
+                <h3>Valeur à comparer : </h3>
+                <h2>42</h2>
+                
                 <label for="subject">Sujet de votre message :</label>
                 <input type="text" name="subject" id="subject">
 
@@ -59,49 +65,6 @@
             </ul>
 
         </footer>
-
-        <script>
-            function afficherChampsFormulaire() {
-                var nom = document.getElementById("nom_user").value;
-                var prenom = document.getElementById("prenom_user").value;
-                var sujet = document.getElementById("subject").value;
-                var message = document.getElementById("message").value;
-
-                console.log("Nom :", nom);
-                console.log("Prénom :", prenom);
-                console.log("Sujet du message :", sujet);
-                console.log("Message :", message);
-            }
-
-
-            document.addEventListener("DOMContentLoaded", function() {
-                var formulaire = document.getElementById("monFormulaire");
-                formulaire.addEventListener("submit", function(event) {
-                    event.preventDefault();
-                    afficherChampsFormulaire();
-                    setTimeout(function() {
-                        formulaire.submit();
-                    }, 5000);
-                });
-            });
-
-
-            function envoyer_Form(){
-                var nomUser = document.getElementById("nom_user").value;
-                var nouvellePhrase = "Je sais qui fait du vélo c'est : " + nomUser;
-                alert(nouvellePhrase);
-            }
-            
-            /*var inputField = document.getElementById("nom_user");
-            inputField.addEventListener("input", function() {
-                var inputValue = inputField.value;
-                if (!/^\d*$/.test(inputValue)) {
-                    inputField.value = inputValue.replace(/\D/g, "");
-                }
-            });*/
-
-        </script>
-
 
 
     </body>
