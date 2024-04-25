@@ -17,7 +17,6 @@ def browser():
     driver.quit()
 
 itemsAmountCart = ''
-itemsNamesCart = []
 itemsPricesCart = []
 
 @scenario('./features/tp.feature','Exercise 1')
@@ -83,7 +82,6 @@ def add_two_items(browser, amount):
     itemsPrices=browser.find_elements(By.CSS_SELECTOR, "div[data-test=inventory-item-price]")
     for x in range(int(amount)):
         items[x].click()
-        itemsNamesCart.append(itemsNames[x].text)
         itemsPricesCart.append(itemsPrices[x].text)
     assert browser.find_element(By.CSS_SELECTOR, "span[data-test=shopping-cart-badge]").text == amount
 
