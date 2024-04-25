@@ -4,16 +4,17 @@ Feature: Contact form validation
 
     Scenario: Verify the presence of the input field
         Given I am on the contact page
-        Then I should see the "nom" input field "text"
+        Then I should see the "nom_user" input field "text"
+        And I should see the "prenom_user" input field "text"
 
     Scenario: Verify input field is disabled
         Given I am on the contact page
-        Then I should see the "nom" is disabled
+        Then I should see the "nom_user" is disabled
         And I should see the "prenom" is enabled
 
     Scenario: Verify label text
         Given I am on the contact page
-        Then I should see the "nom" label is equal to "Votre Nom" 
+        Then I should see the "nom_user" label is equal to "Votre Nom" 
 
     Scenario: Write in a field
         Given I am on the contact page

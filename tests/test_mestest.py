@@ -22,9 +22,16 @@ def test_input_field_presence():
 def open_contact_page(browser):
     browser.get("file:///C:/Users/Formations/formations/seleniumPython/siteTest/contact.html")
 
+
 @then('I should see the "nom" input field "text"')
 def see_input_field(browser):
     assert browser.find_element(By.NAME, "nom_user").is_displayed()
+
+
+@then(parsers.parse('I should see the "{field_name}" input field "{field_type}"'))
+def open_contact_page(browser,field_name,field_type):
+     assert browser.find_element(By.NAME, field_name).is_displayed()
+     assert browser.find_element(By.NAME, field_name).get_attribute('type') == field_type
 
 
 @scenario('./features/contact_form.feature', "Verify input field is disabled")
@@ -79,11 +86,11 @@ def contact_page_displayed(browser):
 def test_compare_values():
     pass
 
+global valueToCompare
 valueToCompare = ''
 
 @given('I am on the index page with a value to compare')
 def store_value(browser):
-    global valueToCompare
     browser.get("file:///C:/Users/Formations/formations/seleniumPython/siteTest/index.html")
     valueToCompare = browser.find_element(By.TAG_NAME, 'h2').text
 
@@ -100,3 +107,4 @@ def test_select_fruit():
 def select_from_dropdown(browser):
     fruitsSelection = Select(browser.find_element(By.ID, 'fruits'))
     fruitsSelection.select_by_value('mango')
+    time.sleep(10)
