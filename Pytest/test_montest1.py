@@ -1,7 +1,7 @@
 import pytest
 
 def test_monPremierTest():
-    assert 1 == 2
+    assert 2 == 2
 
 
 

@@ -16,7 +16,7 @@ def browser():
     driver.quit()
 
 
-@scenario('./features/contact_form.feature', "Verify the presence of the input field")
+@scenario('features/pom.feature', "Verify the presence of the input field")
 def test_input_field_presence():
     pass
 
