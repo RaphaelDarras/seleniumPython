@@ -40,3 +40,23 @@ def check_login_page_displayed(browser):
     assert browser.current_url == 'https://www.saucedemo.com/'
     assert not browser.current_url == 'https://www.saucedemo.com/inventory.html'
     assert browser.find_element(By.ID, 'login-button').is_displayed()
+
+@scenario('./features/tp.feature','Exercise 2')
+def test_bad_credentials_error(browser):
+    pass
+
+
+@given('I am on the login page')
+def access_login_page(browser):
+    browser.get('https://www.saucedemo.com/')
+
+@when(parsers.parse('I try to log with the "{user}" credentials'))
+def locked_out_user_log(browser,user):
+    browser.find_element(By.ID, 'user-name').send_keys(user)
+    browser.find_element(By.ID, 'password').send_keys('secret_sauce')
+    browser.find_element(By.ID, 'login-button').click()
+
+@then('I see an error message')
+def log_error_message(browser):
+    error_message = browser.find_element(By.CSS_SELECTOR, 'h3[data-test=error]').text
+    assert error_message == 'Epic sadface: Sorry, this user has been locked out.'
