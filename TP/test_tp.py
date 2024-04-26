@@ -96,7 +96,6 @@ def add_two_items(browser, amount):
     #Little bonus, making sure the little red bubble on the cart shows the correct number
     assert browser.find_element(By.CSS_SELECTOR, "span[data-test=shopping-cart-badge]").text == amount
 
-
 @when('I go to the cart')
 def go_cart(browser):
     #Step 4: Going to the cart
@@ -127,9 +126,15 @@ def check_order_infos(browser):
     #float()
     #string.replace('','')
     #round()
-    firstItemPrice = itemsPricesCart[0][1:]
-    secondItemPrice = itemsPricesCart[1][1:]
-    itemsTotal = float(firstItemPrice)+float(secondItemPrice)
+    itemsPricesOrder = []
+    for x in range(len(itemsPricesCart)):
+        itemsPricesOrder.append(itemsPricesCart[x][1:])
+    itemsTotal = 0
+    for x in range(len(itemsPricesOrder)):
+        itemsTotal = itemsTotal + float(itemsPricesOrder[x])
+    # firstItemPrice = itemsPricesCart[0][1:]
+    # secondItemPrice = itemsPricesCart[1][1:]
+    # itemsTotal = float(firstItemPrice)+float(secondItemPrice)
     assert itemsTotal == float(browser.find_element(By.CSS_SELECTOR, "div[data-test=subtotal-label]").text.replace('Item total: $', ''))
 
     roundedTotal = round(itemsTotal)
