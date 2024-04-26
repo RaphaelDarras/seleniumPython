@@ -129,12 +129,10 @@ def check_order_infos(browser):
     itemsPricesOrder = []
     for x in range(len(itemsPricesCart)):
         itemsPricesOrder.append(itemsPricesCart[x][1:])
+        
     itemsTotal = 0
     for x in range(len(itemsPricesOrder)):
         itemsTotal = itemsTotal + float(itemsPricesOrder[x])
-    # firstItemPrice = itemsPricesCart[0][1:]
-    # secondItemPrice = itemsPricesCart[1][1:]
-    # itemsTotal = float(firstItemPrice)+float(secondItemPrice)
     assert itemsTotal == float(browser.find_element(By.CSS_SELECTOR, "div[data-test=subtotal-label]").text.replace('Item total: $', ''))
 
     roundedTotal = round(itemsTotal)
